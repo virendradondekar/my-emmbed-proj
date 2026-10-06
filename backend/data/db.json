@@ -1,0 +1,450 @@
+{
+  "accounts": [
+    {
+      "id": "0305bcce-e798-4960-84e6-897fd158d4c8",
+      "name": "Personal",
+      "email": "personal@gmail.com",
+      "color": "#4F8EF7"
+    },
+    {
+      "id": "7fccf544-3dc4-46b6-a520-df677a9324f6",
+      "name": "Work",
+      "email": "work@company.com",
+      "color": "#9B72F5"
+    },
+    {
+      "id": "bebe513a-3ba3-477e-944a-6e3dd8b7804c",
+      "name": "hello",
+      "email": "darkknight@viasocket.com",
+      "color": "#26D07C"
+    },
+    {
+      "id": "fb0061dc-5d87-4666-95b9-b96fd9e6e018",
+      "name": "Veeru.office",
+      "email": "veeru.office1@gmail.com",
+      "color": "#26D07C"
+    }
+  ],
+  "items": [
+    {
+      "id": "d04643ce-fc2a-4e37-9fff-8a5d5ddb877c",
+      "acctId": "0305bcce-e798-4960-84e6-897fd158d4c8",
+      "name": "Figma",
+      "category": "Design",
+      "plan": "Professional",
+      "cost": "800",
+      "currency": "₹ INR",
+      "cycle": "monthly",
+      "start": "2026-07-31",
+      "expiry": "2026-10-04",
+      "notes": "Design tool",
+      "key": "",
+      "seats": "5",
+      "url": "https://figma.com",
+      "isDraft": false,
+      "createdAt": "2026-09-29T13:43:01.297Z"
+    },
+    {
+      "id": "96e49ce5-1c69-4b19-93e9-234205b9c13b",
+      "acctId": "0305bcce-e798-4960-84e6-897fd158d4c8",
+      "name": "AWS EC2",
+      "category": "Infrastructure",
+      "plan": "On-demand",
+      "cost": "3200",
+      "currency": "₹ INR",
+      "cycle": "monthly",
+      "start": "2026-08-30",
+      "expiry": "2026-10-21",
+      "notes": "us-east-1",
+      "key": "",
+      "seats": "1",
+      "url": "",
+      "isDraft": false,
+      "createdAt": "2026-09-29T13:43:01.297Z"
+    },
+    {
+      "id": "341757cf-fd8a-4651-8001-2b964ec09c07",
+      "acctId": "0305bcce-e798-4960-84e6-897fd158d4c8",
+      "name": "Slack",
+      "category": "SaaS",
+      "plan": "Pro",
+      "cost": "1200",
+      "currency": "₹ INR",
+      "cycle": "monthly",
+      "start": "2026-07-01",
+      "expiry": "2026-11-13",
+      "notes": "Team comms",
+      "key": "",
+      "seats": "10",
+      "url": "",
+      "isDraft": false,
+      "createdAt": "2026-09-29T13:43:01.297Z"
+    },
+    {
+      "id": "dae1b412-aaa8-4e89-a7ab-d9a1f5dab825",
+      "acctId": "0305bcce-e798-4960-84e6-897fd158d4c8",
+      "name": "yourdomain.com",
+      "category": "Domain",
+      "plan": "Annual",
+      "cost": "1500",
+      "currency": "₹ INR",
+      "cycle": "annual",
+      "start": "2026-03-13",
+      "expiry": "2027-03-13",
+      "notes": "GoDaddy",
+      "key": "",
+      "seats": "1",
+      "url": "",
+      "isDraft": false,
+      "createdAt": "2026-09-29T13:43:01.297Z"
+    },
+    {
+      "id": "cb58c06e-b0ee-4488-b6f5-673e94843fa6",
+      "acctId": "0305bcce-e798-4960-84e6-897fd158d4c8",
+      "name": "MacBook Pro M3",
+      "category": "Hardware",
+      "plan": "AppleCare+",
+      "cost": "24000",
+      "currency": "₹ INR",
+      "cycle": "annual",
+      "start": "2025-08-25",
+      "expiry": "2026-09-26",
+      "notes": "SN: XYZ123",
+      "key": "XYZ123",
+      "seats": "1",
+      "url": "",
+      "isDraft": false,
+      "createdAt": "2026-09-29T13:43:01.297Z"
+    },
+    {
+      "id": "9e438249-b286-4ed3-a447-789849a01639",
+      "acctId": "7fccf544-3dc4-46b6-a520-df677a9324f6",
+      "name": "Vercel Pro",
+      "category": "Infrastructure",
+      "plan": "Pro",
+      "cost": "1700",
+      "currency": "₹ INR",
+      "cycle": "monthly",
+      "start": "2026-09-14",
+      "expiry": "2026-10-14",
+      "notes": "Frontend deploy",
+      "key": "",
+      "seats": "1",
+      "url": "https://vercel.com",
+      "isDraft": false,
+      "createdAt": "2026-09-29T13:43:01.297Z"
+    },
+    {
+      "id": "3264fdc1-73d0-4e66-bbb7-1c013949befa",
+      "acctId": "7fccf544-3dc4-46b6-a520-df677a9324f6",
+      "name": "Linear",
+      "category": "SaaS",
+      "plan": "Business",
+      "cost": "600",
+      "currency": "₹ INR",
+      "cycle": "monthly",
+      "start": "2026-09-19",
+      "expiry": "2026-12-28",
+      "notes": "PM tool",
+      "key": "",
+      "seats": "3",
+      "url": "",
+      "isDraft": false,
+      "createdAt": "2026-09-29T13:43:01.297Z"
+    },
+    {
+      "id": "e02da1e9-bc82-4dd3-91ac-2fd3b40d8219",
+      "acctId": "7fccf544-3dc4-46b6-a520-df677a9324f6",
+      "name": "Adobe CC",
+      "category": "License",
+      "plan": "All Apps",
+      "cost": "4800",
+      "currency": "₹ INR",
+      "cycle": "annual",
+      "start": "2025-12-03",
+      "expiry": "2027-04-27",
+      "notes": "1 seat",
+      "key": "ADOBE-XXXX",
+      "seats": "1",
+      "url": "",
+      "isDraft": false,
+      "createdAt": "2026-09-29T13:43:01.297Z"
+    },
+    {
+      "id": "54dbe0b0-acb0-418f-8ace-7f3fd87c5f7e",
+      "acctId": "7fccf544-3dc4-46b6-a520-df677a9324f6",
+      "name": "Notion Team",
+      "category": "SaaS",
+      "plan": "Team",
+      "cost": "900",
+      "currency": "₹ INR",
+      "cycle": "monthly",
+      "start": "2026-08-10",
+      "expiry": "2026-10-09",
+      "notes": "Docs & wiki",
+      "key": "",
+      "seats": "5",
+      "url": "",
+      "isDraft": false,
+      "createdAt": "2026-09-29T13:43:01.297Z"
+    },
+    {
+      "id": "e244ebd4-6b4e-42ca-ba8a-ae8983da20e4",
+      "acctId": "0305bcce-e798-4960-84e6-897fd158d4c8",
+      "name": "Acme Cloud",
+      "category": "SaaS",
+      "plan": "Acme Cloud Pro plan",
+      "cost": "2499.00",
+      "currency": "₹ INR",
+      "cycle": "monthly",
+      "start": "2026-09-29",
+      "expiry": "",
+      "notes": "Auto-added from invoice email: TEST Invoice INV-9001 from Acme Cloud",
+      "key": "",
+      "seats": "1",
+      "url": "",
+      "isDraft": false,
+      "sourceEmailId": "test-1790692030298",
+      "createdAt": "2026-09-29T14:27:44.174Z"
+    }
+  ],
+  "settings": {
+    "name": "You",
+    "email": "me@example.com",
+    "bio": "",
+    "color": "#26D07C",
+    "showExpiredBanner": true,
+    "compact": false,
+    "annualView": true,
+    "vsBannerDismissed": false,
+    "vsUserId": "5c3e22f7-d60b-4f20-8f70-6a816435ed7a"
+  },
+  "vsIntegration": {
+    "enabled": true,
+    "connectedAccts": {
+      "0305bcce-e798-4960-84e6-897fd158d4c8": {
+        "linked": true,
+        "active": true,
+        "authId": "auth2tt7knsa_rowo0bqrhj5g",
+        "subscriptionId": "scriSfiyMPDa",
+        "email": "personal@gmail.com",
+        "linkedAt": "2026-10-03T13:29:01.862Z",
+        "serviceId": "rowo0bqrhj5g",
+        "triggerVersionId": "rowubk94iqsc",
+        "inputData": {
+          "query": [],
+          "thread": "first_email_only"
+        },
+        "actionScriptId": "scriUcgoWbL8"
+      },
+      "fb0061dc-5d87-4666-95b9-b96fd9e6e018": {
+        "linked": true,
+        "active": true,
+        "authId": "auth2uTDXSi9_rowo0bqrhj5g",
+        "subscriptionId": "scrio7CVecAG",
+        "email": "veeru.office1@gmail.com",
+        "linkedAt": "2026-10-03T13:29:30.919Z",
+        "serviceId": "rowo0bqrhj5g",
+        "triggerVersionId": "rowubk94iqsc",
+        "inputData": {
+          "query": [],
+          "thread": "first_email_only"
+        }
+      }
+    }
+  },
+  "invoices": [
+    {
+      "id": "ea59e568-fec9-4ca6-901c-ea46a5a80a2c",
+      "acctId": "0305bcce-e798-4960-84e6-897fd158d4c8",
+      "vendor": "ABC Home Appliances",
+      "kind": "purchase",
+      "invoiceNumber": "INV-2026-10458",
+      "purchaseDate": "2026-10-03",
+      "name": "LG GL-S292SDSX Refrigerator",
+      "category": "Hardware",
+      "plan": "",
+      "amount": "33618.20",
+      "currency": "₹ INR",
+      "tax": "5128.20",
+      "cycle": "one-time",
+      "sender": "spiderman@viasocket.com",
+      "subject": "Invoice",
+      "notes": "",
+      "emailUrl": "https://mail.google.com/mail/u/0/#inbox/1a101f5af57c0232",
+      "threadId": "1a101f5af57c0232",
+      "messageId": "1a101f5af57c0232",
+      "emailPreview": "Subject: Refrigerator Invoice – LG GL-S292SDSX\r\n\r\nDear Mr. Rahul Sharma,\r\n\r\nPlease find attached the invoice for your refrigerator purchase.\r\n\r\nInvoice Details\r\n\r\nInvoice No.: INV-2026-10458\r\n\r\nInvoice Date: 3 October 2026\r\n\r\nCustomer Name: Rahul Sharma\r\n\r\nProduct: LG 260 L 3-Star Frost-Free Double Door Refrigerator\r\n\r\nModel: GL-S292SDSX\r\n\r\nQuantity: 1\r\n\r\nProduct Value: ₹28,490\r\n\r\nGST: ₹5,128.20\r\n\r\nTotal Invoice Amount: ₹33,618.20\r\n\r\nPayment Status: Paid\r\n\r\nPayment Method: UPI\r\n\r\nThank you for choosing us. Please keep this invoice safely for warranty and\r\nservice purposes.\r\n\r\nRegards,\r\nAmit Verma\r\nABC Home Appliances\r\nIndore, Madhya Pradesh\r\nPhone: +91 98765 43210\r\nEmail: sales@abchomeappliances.example\r\n",
+      "replies": [],
+      "attachmentNames": [],
+      "confidence": 1,
+      "needsReview": false,
+      "sourceEmailId": "1a101f5af57c0232",
+      "createdAt": "2026-10-03T13:39:30.200Z"
+    },
+    {
+      "id": "8de980ea-6b79-4aa9-824e-72c273a169ef",
+      "acctId": "0305bcce-e798-4960-84e6-897fd158d4c8",
+      "vendor": "ABC Electronics Pvt. Ltd.",
+      "kind": "purchase",
+      "invoiceNumber": "INV-2026-11246",
+      "purchaseDate": "2026-10-03",
+      "name": "Room Heater",
+      "category": "Hardware",
+      "plan": "",
+      "amount": "3876",
+      "currency": "₹ INR",
+      "tax": "576",
+      "cycle": "unknown",
+      "sender": "vaibhavdodiya847@gmail.com",
+      "subject": "Invoice of Heater",
+      "notes": "",
+      "emailUrl": "https://mail.google.com/mail/u/0/#inbox/1a101e728757447f",
+      "threadId": "1a101e728757447f",
+      "messageId": "1a101e728757447f",
+      "emailPreview": "Dear Customer,\r\n\r\nThank you for your purchase. Please find below the invoice details for your\r\nroom heater:\r\n\r\n*Invoice Details*\r\n\r\n   -\r\n\r\n   *Invoice No.:* INV-2026-11246\r\n   -\r\n\r\n   *Invoice Date:* 03 October 2026\r\n   -\r\n\r\n   *Product:* Room Heater\r\n   -\r\n\r\n   *Brand:* Bajaj\r\n   -\r\n\r\n   *Model:* RHX 3\r\n   -\r\n\r\n   *Type:* Fan Room Heater\r\n   -\r\n\r\n   *Power:* 2000 Watts\r\n   -\r\n\r\n   *Color:* Black\r\n   -\r\n\r\n   *Quantity:* 1\r\n\r\n*Pricing Details*\r\n\r\n   -\r\n\r\n   *Product Price:* ₹3,200\r\n   -\r\n\r\n   *GST (18%):* ₹576\r\n   -\r\n\r\n   *Delivery Charges:* ₹100\r\n   -\r\n\r\n   *Total Invoice Amount:* *₹3,876*\r\n\r\n*Tax Details*\r\n\r\n   -\r\n\r\n   *GSTIN:* 23ABCDE1234F1Z5\r\n   -\r\n\r\n   *HSN Code:* 8516\r\n   -\r\n\r\n   *CGST:* ₹288\r\n   -\r\n\r\n   *SGST:* ₹288\r\n\r\n*Customer Details*\r\n\r\n   -\r\n\r\n   *Customer Name:* Vaibhav Dodiya\r\n   -\r\n\r\n   *Billing Address:* Indore, Madhya Pradesh\r\n   -\r\n\r\n   *Payment Mode:* Online Payment\r\n\r\n*Warranty Details*\r\n\r\n   -\r\n\r\n   *Product Warranty:* 2 Years\r\n   -\r\n\r\n   *Heating Element Warranty:* 1 Year\r\n\r\nPlease retain this invoice for warranty and future service requirements.\r\n\r\nThank you for choosing us.\r\n\r\nRegards,\r\n*Customer Support Team*\r\nABC Electronics Pvt. Ltd.\r\n",
+      "replies": [
+        {
+          "message": "hello how are you",
+          "replyMode": "all",
+          "sentAt": "2026-10-03T13:35:19.163Z",
+          "gmailMessageId": "1a101f9ea1398e84"
+        }
+      ],
+      "attachmentNames": [],
+      "confidence": 1,
+      "needsReview": false,
+      "sourceEmailId": "1a101e728757447f",
+      "createdAt": "2026-10-03T13:23:58.589Z"
+    },
+    {
+      "id": "e7b0c9cb-dc92-4fe0-a191-b7fafa00081e",
+      "acctId": "0305bcce-e798-4960-84e6-897fd158d4c8",
+      "vendor": "Acme Cloud",
+      "kind": "invoice",
+      "invoiceNumber": "INV-9001",
+      "purchaseDate": "2026-09-29",
+      "name": "Acme Cloud",
+      "category": "SaaS",
+      "plan": "Acme Cloud Pro plan",
+      "amount": "2499.00",
+      "currency": "₹ INR",
+      "tax": "381.00",
+      "cycle": "monthly",
+      "sender": "billing@test-vendor.example",
+      "subject": "TEST Invoice INV-9001 from Acme Cloud",
+      "notes": "",
+      "emailUrl": "",
+      "threadId": "test-thread",
+      "messageId": "test-1790692030298",
+      "emailPreview": "Hi, please find invoice INV-9001 for Acme Cloud Pro plan, monthly. Amount due: INR 2,499.00 incl. GST 381. Date: 2026-09-29.",
+      "replies": [
+        {
+          "message": "hyh",
+          "replyMode": "sender",
+          "sentAt": "2026-09-29T14:33:28.828Z",
+          "gmailMessageId": null
+        }
+      ],
+      "attachmentNames": [],
+      "confidence": 1,
+      "needsReview": false,
+      "sourceEmailId": "test-1790692030298",
+      "createdAt": "2026-09-29T14:27:44.174Z"
+    }
+  ],
+  "slackIntegration": {
+    "enabled": true,
+    "authId": "auth2A4KavHB_rowbu58rc",
+    "scriptId": "scriMaM3YJz9",
+    "destinationType": "user",
+    "destinationId": "U0B16MHUK8W",
+    "destinationLabel": "Ajit Chouhan"
+  },
+  "activity": [
+    {
+      "id": "a9f95a68-b241-4e79-8095-e513b3ef7e9c",
+      "text": "Email analyzed — purchase added for ABC Home Appliances",
+      "ico": "✉️",
+      "color": "var(--acc-bg)",
+      "ts": 1791034770200
+    },
+    {
+      "id": "b3ac3882-c823-4a05-828d-e051dd6d0050",
+      "text": "Email analyzed — purchase added for ABC Electronics Pvt. Ltd.",
+      "ico": "✉️",
+      "color": "var(--acc-bg)",
+      "ts": 1791033838589
+    },
+    {
+      "id": "f4cc5d37-24b1-449f-ac80-ed1bacbcd916",
+      "text": "Email analyzed — invoice added for Acme Cloud",
+      "ico": "✉️",
+      "color": "var(--acc-bg)",
+      "ts": 1790692064174
+    },
+    {
+      "id": "0eeb39c7-fca9-4aba-8aea-b939aee964d0",
+      "text": "SubTrack Pro initialized",
+      "ico": "✅",
+      "color": "var(--grn-bg)",
+      "ts": 1790689381297
+    }
+  ],
+  "notifications": [
+    {
+      "id": "d708fb4b-23ca-4b05-a476-257f95fdcc39",
+      "title": "Purchase added: ABC Home Appliances",
+      "desc": "₹ INR 33618.20 · Invoice",
+      "ico": "✉️",
+      "color": "#4F8EF7",
+      "unread": false,
+      "ts": 1791034770200
+    },
+    {
+      "id": "019266f9-e398-4863-a208-857f51e537c3",
+      "title": "Purchase added: ABC Electronics Pvt. Ltd.",
+      "desc": "₹ INR 3876 · Invoice of Heater",
+      "ico": "✉️",
+      "color": "#4F8EF7",
+      "unread": false,
+      "ts": 1791033838589
+    },
+    {
+      "id": "0ab1e8d8-aa62-4880-9fa9-37f45088f1b5",
+      "title": "Invoice added: Acme Cloud",
+      "desc": "₹ INR 2499.00 · TEST Invoice INV-9001 from Acme Cloud",
+      "ico": "✉️",
+      "color": "#4F8EF7",
+      "unread": false,
+      "ts": 1790692064174
+    },
+    {
+      "id": "00d49d24-c13d-4503-80df-1d63ae576f9f",
+      "title": "Figma Pro expiring soon",
+      "desc": "5 days left — renew to avoid interruption",
+      "ico": "🎨",
+      "color": "#EC4899",
+      "unread": false,
+      "ts": 1790685781297
+    },
+    {
+      "id": "a0375c82-a51f-41d2-abfb-ed5619b4160d",
+      "title": "MacBook AppleCare expired",
+      "desc": "Warranty expired 3 days ago",
+      "ico": "💻",
+      "color": "#26D07C",
+      "unread": false,
+      "ts": 1790602981297
+    },
+    {
+      "id": "8b0b5018-cc99-4f21-970d-38defe90dd45",
+      "title": "Notion Team — 10 days left",
+      "desc": "Renewal due soon",
+      "ico": "☁️",
+      "color": "#4F8EF7",
+      "unread": false,
+      "ts": 1790646181297
+    }
+  ]
+}

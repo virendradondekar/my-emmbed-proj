@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SubTrack Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body class="auth-pending">
+
+<div class="shell">
+
+<!-- ════════════════ SIDEBAR ════════════════ -->
+<aside class="sidebar">
+  <div class="sb-top">
+    <div class="brand">
+      <div class="brand-mark">📡</div>
+      <div>
+        <div class="brand-name">SubTrack Pro</div>
+        <div class="brand-ver">v2.0 · personal</div>
+      </div>
+    </div>
+
+    <!-- Account Switcher -->
+    <div class="acct-switcher" id="acctSwitcher">
+      <div class="acct-current" id="acctCurrent" onclick="toggleAcctDropdown()">
+        <div class="acct-avatar" id="acctAvatar" style="background:#4F8EF7">Y</div>
+        <div class="acct-info">
+          <div class="acct-name" id="acctName">Loading…</div>
+          <div class="acct-email" id="acctEmail">…</div>
+        </div>
+        <span class="acct-chevron">▾</span>
+      </div>
+      <div class="acct-dropdown" id="acctDropdown">
+        <div class="acct-list" id="acctList"></div>
+        <div class="acct-divider"></div>
+        <div class="acct-action" onclick="openAcctModal()"><span>+</span> Add account</div>
+        <div class="acct-action" onclick="openMultiSelect()"><span>⊞</span> Multi-account view</div>
+      </div>
+    </div>
+    <div class="multi-banner" id="multiBanner"></div>
+  </div>
+
+  <nav>
+    <div class="nav-group-label">workspace</div>
+    <div class="nav-link active" data-page="dashboard" onclick="goPage('dashboard',this)">
+      <span class="nl-icon">⊞</span> Dashboard
+    </div>
+    <div class="nav-link" data-page="subscriptions" onclick="goPage('subscriptions',this)">
+      <span class="nl-icon">↻</span> Subscriptions
+      <span class="nl-badge badge-y" id="nbExpiring" style="display:none">0</span>
+    </div>
+    <div class="nav-link" data-page="warranties" onclick="goPage('warranties',this)">
+      <span class="nl-icon">🛡</span> Warranties
+    </div>
+    <div class="nav-link" data-page="licenses" onclick="goPage('licenses',this)">
+      <span class="nl-icon">🔑</span> Licenses
+    </div>
+    <div class="nav-link" data-page="invoices" onclick="goPage('invoices',this)">
+      <span class="nl-icon">🧾</span> Invoices & Purchases
+    </div>
+
+    <div class="nav-group-label">analytics</div>
+    <div class="nav-link" data-page="spend" onclick="goPage('spend',this)">
+      <span class="nl-icon">₹</span> Spend Analysis
+    </div>
+    <div class="nav-link" data-page="calendar" onclick="goPage('calendar',this)">
+      <span class="nl-icon">◫</span> Calendar
+    </div>
+
+    <div class="nav-group-label">system</div>
+    <div class="nav-link" data-page="notifications" onclick="goPage('notifications',this)">
+      <span class="nl-icon">🔔</span> Notifications
+      <span class="nl-badge badge-r" id="nbNotif" style="display:none">0</span>
+    </div>
+    <div class="nav-link" data-page="integrations" onclick="goPage('integrations',this)">
+      <span class="nl-icon">🔗</span> Integrations
+      <span class="nl-badge badge-g" id="nbInteg">New</span>
+    </div>
+    <div class="nav-link" data-page="settings" onclick="goPage('settings',this)">
+      <span class="nl-icon">⚙</span> Settings
+    </div>
+  </nav>
+
+  <div class="sb-bottom">
+    <div class="user-row" onclick="goPage('profile',this)">
+      <div class="user-avatar" id="sbUserAvatar">Y</div>
+      <div class="user-meta">
+        <div class="user-n" id="sbUserName">You</div>
+        <div class="user-e" id="sbUserEmail">me@example.com</div>
+      </div>
+      <span class="user-gear">⚙</span>
+    </div>
+  </div>
+</aside>
+
+<!-- ════════════════ MAIN ════════════════ -->
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="tb-title" id="pageTitle">Dashboard</div>
+    <div class="tb-right">
+      <div class="search">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--tx3);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" placeholder="Search items…" id="searchInput" oninput="handleSearch()">
+      </div>
+      <button class="tb-icon-btn" onclick="goPage('notifications')" title="Notifications" style="position:relative">
+        🔔<span class="notif-dot" id="notifDot" style="display:none"></span>
+      </button>
+      <button class="btn btn-ghost btn-sm" id="themeToggle" onclick="toggleTheme()" title="Switch color theme">☀ Light</button>
+      <button class="btn btn-ghost btn-sm" onclick="logout()" title="Sign out">Sign out</button>
+      <button class="btn btn-ghost btn-sm" onclick="exportCSV()">↓ Export</button>
+      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('csvImportInput').click()">↑ Import</button>
+      <input id="csvImportInput" type="file" accept=".csv,text/csv" hidden onchange="importCSVFile(event)">
+      <button class="btn btn-primary btn-sm" onclick="openItemModal()">+ Add item</button>
+    </div>
+  </div>
+
+  <!-- ─── INVOICES & PURCHASES ─── -->
+  <div class="view" id="view_invoices">
+    <div class="sec-hdr"><div><div class="sec-title">Invoices & Purchases</div><div style="font-size:12px;color:var(--tx2)">Automatically extracted from connected Gmail accounts</div></div><button class="btn btn-ghost btn-sm" onclick="loadInvoices()">↻ Refresh</button></div>
+    <div class="tbl-wrap"><table><thead><tr><th>Date</th><th>Vendor / Subject</th><th>Type</th><th>Invoice #</th><th>Amount</th><th>Email</th><th></th></tr></thead><tbody id="invoiceBody"></tbody></table><div class="empty" id="invoiceEmpty" style="display:none"><div class="empty-ico">🧾</div><div class="empty-title">No invoice emails yet</div><div class="empty-desc">Connect Gmail in Integrations. New matching emails will appear here automatically.</div></div></div>
+  </div>
+
+  <!-- Account filter bar (multi-account view) -->
+  <div class="acct-filter-bar" id="acctFilterBar"></div>
+
+  <!-- ─── DASHBOARD ─── -->
+  <div class="view active" id="view_dashboard">
+    <div id="vsBannerDash"></div>
+    <div class="stats-row" id="statsRow"></div>
+
+    <div class="sec-hdr">
+      <div class="sec-title">All Items</div>
+      <div class="sec-right">
+        <div class="ftabs">
+          <div class="ftab active" onclick="setFilter('all',this)">All</div>
+          <div class="ftab" onclick="setFilter('SaaS',this)">SaaS</div>
+          <div class="ftab" onclick="setFilter('Infrastructure',this)">Infra</div>
+          <div class="ftab" onclick="setFilter('Design',this)">Design</div>
+          <div class="ftab" onclick="setFilter('Domain',this)">Domain</div>
+          <div class="ftab" onclick="setFilter('Hardware',this)">Hardware</div>
+          <div class="ftab" onclick="setFilter('License',this)">License</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr>
+          <th onclick="sortBy('name')">Product ↕</th>
+          <th onclick="sortBy('category')">Category ↕</th>
+          <th>Account</th>
+          <th onclick="sortBy('cost')">Cost ↕</th>
+          <th onclick="sortBy('expiry')">Expiry ↕</th>
+          <th onclick="sortBy('days')">Days Left ↕</th>
+          <th>Status</th>
+          <th></th>
+        </tr></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+      <div id="tableEmpty" class="empty" style="display:none">
+        <div class="empty-ico">📋</div>
+        <div class="empty-title">No items found</div>
+        <div class="empty-desc">Add your first subscription, warranty, or license to get started.</div>
+        <button class="btn btn-primary btn-sm" onclick="openItemModal()">Add item</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <div class="sec-hdr" style="margin-bottom:14px">
+          <div class="sec-title">Upcoming Renewals</div>
+          <span style="font-size:11px;color:var(--tx3);font-family:var(--mono)">60 DAYS</span>
+        </div>
+        <div id="timeline"></div>
+      </div>
+      <div>
+        <div class="panel" style="margin-bottom:14px">
+          <div class="sec-hdr" style="margin-bottom:14px">
+            <div class="sec-title">Spend by Category</div>
+            <span style="font-size:11px;color:var(--tx3);font-family:var(--mono)">₹/MO</span>
+          </div>
+          <div id="spendList"></div>
+        </div>
+        <div class="panel">
+          <div class="sec-hdr" style="margin-bottom:12px"><div class="sec-title">Recent Activity</div></div>
+          <div id="activityList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SUBSCRIPTIONS ─── -->
+  <div class="view" id="view_subscriptions">
+    <div class="sec-hdr">
+      <div class="sec-title">Subscriptions</div>
+      <button class="btn btn-primary btn-sm" onclick="openItemModal(null,'SaaS')">+ Add subscription</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Product</th><th>Account</th><th>Plan</th><th>Cost</th><th>Billing</th><th>Expiry</th><th>Days Left</th><th>Status</th><th></th></tr></thead>
+        <tbody id="subBody"></tbody>
+      </table>
+      <div id="subEmpty" class="empty" style="display:none">
+        <div class="empty-ico">↻</div>
+        <div class="empty-title">No subscriptions</div>
+        <div class="empty-desc">Track your SaaS tools and recurring plans.</div>
+        <button class="btn btn-primary btn-sm" onclick="openItemModal(null,'SaaS')">Add subscription</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WARRANTIES ─── -->
+  <div class="view" id="view_warranties">
+    <div class="sec-hdr">
+      <div class="sec-title">Warranties & Hardware</div>
+      <button class="btn btn-primary btn-sm" onclick="openItemModal(null,'Hardware')">+ Add warranty</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Product</th><th>Account</th><th>Serial / Notes</th><th>Cost</th><th>Expiry</th><th>Days Left</th><th>Status</th><th></th></tr></thead>
+        <tbody id="warBody"></tbody>
+      </table>
+      <div id="warEmpty" class="empty" style="display:none">
+        <div class="empty-ico">🛡</div>
+        <div class="empty-title">No warranties tracked</div>
+        <div class="empty-desc">Add hardware, devices, and support contracts here.</div>
+        <button class="btn btn-primary btn-sm" onclick="openItemModal(null,'Hardware')">Add warranty</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── LICENSES ─── -->
+  <div class="view" id="view_licenses">
+    <div class="sec-hdr">
+      <div class="sec-title">Software Licenses</div>
+      <button class="btn btn-primary btn-sm" onclick="openItemModal(null,'License')">+ Add license</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Product</th><th>Account</th><th>License Key</th><th>Seats</th><th>Cost</th><th>Expiry</th><th>Status</th><th></th></tr></thead>
+        <tbody id="licBody"></tbody>
+      </table>
+      <div id="licEmpty" class="empty" style="display:none">
+        <div class="empty-ico">🔑</div>
+        <div class="empty-title">No licenses tracked</div>
+        <div class="empty-desc">Add software licenses, API keys, and perpetual licenses.</div>
+        <button class="btn btn-primary btn-sm" onclick="openItemModal(null,'License')">Add license</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SPEND ─── -->
+  <div class="view" id="view_spend">
+    <div class="stats-row" style="grid-template-columns:repeat(3,1fr)" id="spendStats"></div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="sec-hdr" style="margin-bottom:16px"><div class="sec-title">Monthly spend by category</div></div>
+        <div id="spendList2"></div>
+      </div>
+      <div class="panel">
+        <div class="sec-hdr" style="margin-bottom:16px"><div class="sec-title">Spend by account</div></div>
+        <div id="spendByAcct"></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="sec-hdr" style="margin-bottom:14px"><div class="sec-title">Full cost breakdown</div></div>
+      <div class="tbl-wrap" style="margin:0">
+        <table>
+          <thead><tr><th>Product</th><th>Account</th><th>Category</th><th>Cycle</th><th>Cost</th><th>Monthly equiv.</th><th>Annual equiv.</th></tr></thead>
+          <tbody id="spendTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── CALENDAR ─── -->
+  <div class="view" id="view_calendar">
+    <div class="sec-hdr" style="margin-bottom:16px"><div class="sec-title">Renewal Calendar</div></div>
+    <div class="panel" id="calendarPanel"></div>
+  </div>
+
+  <!-- ─── NOTIFICATIONS ─── -->
+  <div class="view" id="view_notifications">
+    <div class="sec-hdr">
+      <div class="sec-title">Notifications</div>
+      <button class="btn btn-ghost btn-sm" onclick="markAllRead()">Mark all read</button>
+    </div>
+    <div class="panel" style="padding:0;overflow:hidden">
+      <div id="notifList"></div>
+    </div>
+  </div>
+
+  <!-- ─── INTEGRATIONS ─── -->
+  <div class="view" id="view_integrations">
+    <div class="sec-hdr" style="margin-bottom:6px"><div class="sec-title">Integrations</div></div>
+    <div style="font-size:13px;color:var(--tx2);margin-bottom:20px">Connect external services to automatically import and track your subscriptions.</div>
+    <div id="integrationsContent"></div>
+  </div>
+
+  <!-- ─── SETTINGS ─── -->
+  <div class="view" id="view_settings">
+    <div class="sec-hdr" style="margin-bottom:16px"><div class="sec-title">Settings</div></div>
+    <div class="settings-grid">
+      <div class="settings-nav">
+        <div class="snav-item active" onclick="setSettingsTab('accounts',this)">Accounts</div>
+        <div class="snav-item" onclick="setSettingsTab('profile',this)">Profile</div>
+        <div class="snav-item" onclick="setSettingsTab('display',this)">Display</div>
+        <div class="snav-item" onclick="setSettingsTab('danger',this)">Data & Privacy</div>
+      </div>
+      <div id="settingsContent"></div>
+    </div>
+  </div>
+
+  <!-- ─── PROFILE ─── -->
+  <div class="view" id="view_profile">
+    <div class="sec-hdr" style="margin-bottom:16px"><div class="sec-title">Profile</div></div>
+    <div class="profile-grid">
+      <div class="profile-card" id="profileCard"></div>
+      <div>
+        <div class="panel" style="margin-bottom:16px">
+          <div style="font-size:15px;font-weight:700;margin-bottom:4px">Edit Profile</div>
+          <div style="font-size:13px;color:var(--tx2);margin-bottom:18px">Update your personal information</div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div class="frow">
+              <div class="fg"><label class="flabel">Display Name</label><input class="finput" id="profName" placeholder="Your name"></div>
+              <div class="fg"><label class="flabel">Primary Email</label><input class="finput" id="profEmail" placeholder="you@email.com"></div>
+            </div>
+            <div class="fg"><label class="flabel">Bio / Notes</label><textarea class="finput" id="profBio" placeholder="Optional notes…"></textarea></div>
+            <div class="fg"><label class="flabel">Avatar Color</label><div class="color-opts" id="colorOpts"></div></div>
+            <div style="display:flex;justify-content:flex-end"><button class="btn btn-primary" onclick="saveProfile()">Save changes</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+</div><!-- /shell -->
+
+<!-- ════ ADD / EDIT ITEM MODAL ════ -->
+<div class="overlay" id="itemModal">
+  <div class="modal">
+    <div class="modal-hdr">
+      <div>
+        <div class="modal-title" id="itemModalTitle">Add item</div>
+        <div class="modal-sub">Track a subscription, warranty, or license</div>
+      </div>
+      <button class="x-btn" onclick="document.getElementById('itemModal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="fsect">Basic info</div>
+      <div class="fg"><label class="flabel">Name *</label><input class="finput" id="fName" placeholder="e.g. Figma, AWS, MacBook Pro…"></div>
+      <div class="frow">
+        <div class="fg"><label class="flabel">Category *</label>
+          <select class="finput" id="fCat">
+            <option value="">Select…</option>
+            <option>SaaS</option><option>Infrastructure</option><option>Design</option>
+            <option>Domain</option><option>Hardware</option><option>License</option>
+          </select>
+        </div>
+        <div class="fg"><label class="flabel">Account *</label><select class="finput" id="fAcct"></select></div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="flabel">Plan / Tier</label><input class="finput" id="fPlan" placeholder="Pro, Enterprise…"></div>
+        <div class="fg"><label class="flabel">Vendor website</label><input class="finput" id="fUrl" placeholder="https://…"></div>
+      </div>
+      <div class="fsect">Billing</div>
+      <div class="frow3">
+        <div class="fg"><label class="flabel">Cost *</label><input class="finput" id="fCost" type="number" min="0" placeholder="0"></div>
+        <div class="fg"><label class="flabel">Currency</label>
+          <select class="finput" id="fCurr"><option>₹ INR</option><option>$ USD</option><option>€ EUR</option><option>£ GBP</option></select>
+        </div>
+        <div class="fg"><label class="flabel">Billing cycle</label>
+          <select class="finput" id="fCycle"><option value="monthly">Monthly</option><option value="quarterly">Quarterly</option><option value="annual">Annual</option><option value="one-time">One-time</option></select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="flabel">Purchase / Start date</label><input class="finput" id="fStart" type="date"></div>
+        <div class="fg"><label class="flabel">Expiry / Renewal date *</label><input class="finput" id="fExpiry" type="date"></div>
+      </div>
+      <div class="fsect">Details</div>
+      <div class="frow">
+        <div class="fg"><label class="flabel">License key / Serial</label><input class="finput" id="fKey" placeholder="Optional"></div>
+        <div class="fg"><label class="flabel">Seats / Units</label><input class="finput" id="fSeats" type="number" min="1" value="1"></div>
+      </div>
+      <div class="fg"><label class="flabel">Notes</label><textarea class="finput" id="fNotes" placeholder="Login, renewal link, owner, any notes…"></textarea></div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn btn-ghost" onclick="document.getElementById('itemModal').classList.remove('open')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveItem()">Save item</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════ ADD / EDIT ACCOUNT MODAL ════ -->
+<div class="overlay" id="acctModal">
+  <div class="modal" style="width:420px">
+    <div class="modal-hdr">
+      <div>
+        <div class="modal-title" id="acctModalTitle">Add account</div>
+        <div class="modal-sub">Each account groups subscriptions by email/workspace</div>
+      </div>
+      <button class="x-btn" onclick="document.getElementById('acctModal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="fg"><label class="flabel">Account / Workspace name *</label><input class="finput" id="aName" placeholder="Personal, Work, Startup…"></div>
+      <div class="fg"><label class="flabel">Email address *</label><input class="finput" id="aEmail" type="email" placeholder="you@company.com"></div>
+      <div class="fg"><label class="flabel">Avatar Color</label><div class="color-opts" id="acctColorOpts"></div></div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn btn-ghost" onclick="document.getElementById('acctModal').classList.remove('open')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveAcct()">Save account</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════ MULTI-SELECT MODAL ════ -->
+<div class="overlay" id="multiModal">
+  <div class="modal" style="width:400px">
+    <div class="modal-hdr">
+      <div>
+        <div class="modal-title">Multi-account view</div>
+        <div class="modal-sub">Select accounts to view together on dashboard</div>
+      </div>
+      <button class="x-btn" onclick="document.getElementById('multiModal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body" id="multiModalBody"></div>
+    <div class="modal-ftr">
+      <button class="btn btn-ghost" onclick="document.getElementById('multiModal').classList.remove('open')">Close</button>
+      <button class="btn btn-primary" onclick="applyMultiSelect()">Apply view</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SLACK DESTINATION MODAL ════ -->
+<div class="overlay" id="slackDestinationModal" onclick="if(event.target===this)closeSlackDestination()">
+  <div class="modal" style="width:440px">
+    <div class="modal-hdr"><div><div class="modal-title">Choose Slack destination</div><div class="modal-sub">Choose a channel or DM once; SubTrack will remember it.</div></div><button class="x-btn" type="button" aria-label="Close" onclick="closeSlackDestination()">✕</button></div>
+    <div class="modal-body"><div class="fg"><label class="flabel">Send notifications to</label><select class="finput" id="slackDestinationType" onchange="loadSlackOptions()"><option value="channel">Channel</option><option value="user">Direct message</option></select></div><div class="fg"><label class="flabel">Slack destination</label><select class="finput" id="slackDestinationSelect"><option>Loading…</option></select></div><div id="slackDestinationError" style="color:var(--red);font-size:12px"></div></div>
+    <div class="modal-ftr"><button class="btn btn-ghost" type="button" onclick="closeSlackDestination()">Cancel</button><button class="btn btn-primary" type="button" onclick="saveSlackDestination()">Enable notifications</button></div>
+  </div>
+</div>
+
+<!-- ════ REPLY TO INVOICE EMAIL MODAL ════ -->
+<div class="overlay" id="replyModal" onclick="if(event.target===this)closeReplyModal()">
+  <div class="modal" style="width:560px">
+    <div class="modal-hdr"><div><div class="modal-title" id="replyModalTitle">Reply to email</div><div class="modal-sub" id="replyModalSub"></div></div><button class="x-btn" type="button" aria-label="Close" onclick="closeReplyModal()">✕</button></div>
+    <div class="modal-body">
+      <div class="fg"><label class="flabel">Original message</label><div class="reply-preview" id="replyPreview"></div></div>
+      <div id="replyHistory"></div>
+      <div class="fg"><label class="flabel">Reply to</label><select class="finput" id="replyMode" onchange="document.getElementById('replyCcWrap').style.display=this.value==='all'?'':'none'"><option value="sender">Sender only</option><option value="all">Everyone on the thread</option></select></div>
+      <div class="fg" id="replyCcWrap" style="display:none"><label class="flabel">CC (optional)</label><input class="finput" id="replyCc" placeholder="name@example.com"></div>
+      <div class="fg"><label class="flabel">Your reply</label><textarea class="finput" id="replyMessage" rows="7" placeholder="Write your reply…"></textarea></div>
+      <div id="replyError" style="color:var(--red);font-size:12px"></div>
+    </div>
+    <div class="modal-ftr"><button class="btn btn-ghost" type="button" onclick="closeReplyModal()">Cancel</button><button class="btn btn-primary" type="button" id="replySendBtn" onclick="sendInvoiceReply()">Send reply</button></div>
+  </div>
+</div>
+
+<!-- ════ TOAST CONTAINER ════ -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script type="module" src="js/viasocket-connect.js"></script>
+<script type="module" src="js/viasocket-slack-connect.js"></script>
+</body>
+</html>

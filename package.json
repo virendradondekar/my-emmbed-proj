@@ -1,0 +1,25 @@
+{
+  "name": "subtrack-pro",
+  "version": "1.0.0",
+  "description": "Subscription & Warranty Tracker \u2014 Personal Dashboard",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.4",
+    "express": "^4.18.2",
+    "uuid": "^9.0.0",
+    "viasocket-apps": "^0.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "backend/data/*.json"
+    ]
+  }
+}
